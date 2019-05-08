@@ -5,6 +5,7 @@ import org.javatuples.Pair;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class Common {
@@ -41,8 +42,9 @@ public class Common {
 
     private static int num = 0;
 
-    public static List<Pair<Integer, byte[]>> group(String sendContent) {
+    public static  ConcurrentHashMap<Integer,byte[]> group(String sendContent) {
         List<Pair<Integer, List<Byte>>> result = new ArrayList<>();
+        ConcurrentHashMap<Integer,byte[]> mapResult = new ConcurrentHashMap<>();
         byte[] bytes = sendContent.getBytes();
         int dataLen = 1024 * 1;
         List<Byte> item = null;
@@ -58,12 +60,11 @@ public class Common {
                 item.add(nBytes[1]);
                 item.add(nBytes[2]);
                 item.add(nBytes[3]);
-                result.add(Pair.with(num, item));
+                mapResult.put(num, list2Array(item));
             }
             item.add(bytes[i]);
         }
-        List<Pair<Integer, byte[]>> re = result.stream().map(pair -> Pair.with(pair.getValue0(), list2Array(pair.getValue1()))).collect(Collectors.toList());
-        return re;
+        return mapResult;
     }
 
     public static Pair<Integer, byte[]> readNumAndData(byte[] bytes) {
