@@ -2,11 +2,9 @@ package logViewServer;
 
 import org.javatuples.Pair;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 public class Common {
     public static byte[] intToBytes(int value) {
@@ -43,8 +41,8 @@ public class Common {
     private static int num = 0;
 
     public static  ConcurrentHashMap<Integer,byte[]> group(String sendContent) {
-        List<Pair<Integer, List<Byte>>> result = new ArrayList<>();
-        ConcurrentHashMap<Integer,byte[]> mapResult = new ConcurrentHashMap<>();
+        Map<Integer,List<Byte>> mapResult = new HashMap<>();
+        ConcurrentHashMap<Integer,byte[]> result = new ConcurrentHashMap<>();
         byte[] bytes = sendContent.getBytes();
         int dataLen = 1024 * 1;
         List<Byte> item = null;
@@ -60,22 +58,29 @@ public class Common {
                 item.add(nBytes[1]);
                 item.add(nBytes[2]);
                 item.add(nBytes[3]);
-                mapResult.put(num, list2Array(item));
+                mapResult.put(num, item);
             }
             item.add(bytes[i]);
         }
-        return mapResult;
+        mapResult.forEach((num, byteList ) -> result.put(num, list2Array(byteList)));
+        return result;
     }
 
-    public static Pair<Integer, byte[]> readNumAndData(byte[] bytes) {
+    public static Pair<Integer, byte[]> readNumAndData(byte[] bytes, int length) {
         byte[] nBytes = new byte[]{
                 bytes[0],bytes[1],bytes[2],bytes[3]
         };
         int num = Common.bytesToInt(nBytes,0);
         byte[] content = new byte[bytes.length - 4];
-        for( int j = 4; j < bytes.length; j++) {
+        for( int j = 4; j < length; j++) {
             content[j - 4] = bytes[j];
         }
         return Pair.with(num, content);
+    }
+
+    public static String unixTimestamp2StrTime(long unixTimestamp) {
+        Date date = new Date(unixTimestamp);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(date);
     }
 }
