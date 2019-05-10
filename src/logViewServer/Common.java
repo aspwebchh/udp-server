@@ -2,6 +2,7 @@ package logViewServer;
 
 import org.javatuples.Pair;
 
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -82,5 +83,26 @@ public class Common {
         Date date = new Date(unixTimestamp);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(date);
+    }
+
+    public static String getFileContent(String fullPath) {
+        try {
+            File file = new File(fullPath.trim());
+            FileInputStream fileInputStream = new FileInputStream(file);
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream,"utf8");
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            StringBuilder content = new StringBuilder();
+            String line = bufferedReader.readLine();
+            while(line != null){
+                content.append(line);
+                content.append("\n");
+                line = bufferedReader.readLine();
+            }
+            bufferedReader.close();
+            return content.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

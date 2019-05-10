@@ -3,7 +3,7 @@ package logViewServer;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class LogContentUtil {
         }
     }
 
-    private static final String LOG_PATH = "C:\\Users\\宏鸿\\Desktop\\log";
+    private static final String LOG_PATH = LogViewServer.config.getLogPath();
 
     public static String getPaths() {
         FileNode fileNode = getFileNodes(LOG_PATH);
@@ -44,7 +44,6 @@ public class LogContentUtil {
 
     public static String getFileContent(String filePath) {
         String fullPath = LOG_PATH + "/" + filePath;
-        System.out.println(fullPath);
-        return "";
+        return Common.getFileContent(fullPath);
     }
 }

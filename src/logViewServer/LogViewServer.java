@@ -9,12 +9,17 @@ import java.net.InetAddress;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LogViewServer {
-    private static final int SERVER_PORT = 33000;
+    public static final Config config =  Config.instance();
+
+    private static final int SERVER_PORT = config.getServerPort();
     private static final int PACKET_LENGTH = 1024;
 
     private static volatile boolean statusReadPath = false;
+    private static volatile boolean statusReadFileContent = false;
 
     public static void main(String[] args) throws IOException {
+
+
         byte[] buf = new byte[PACKET_LENGTH];
         DatagramSocket ds = new DatagramSocket(SERVER_PORT);
         DatagramPacket dp_receive = new DatagramPacket(buf, buf.length);
@@ -38,25 +43,29 @@ public class LogViewServer {
             } else if(cmd == Cmd.READ_FILE_CONTENT) {
                 byte[] content = dataWithNum.getValue1();
                 String path = new String(content);
-                String fileContent = LogContentUtil.getFileContent(path);
-
-                byte[] finishBytes = Common.intToBytes(Cmd.READ_FILE_CONTENT_FINISH);
-                DatagramPacket ackDp = new DatagramPacket(finishBytes, finishBytes.length, clientAddr, clientPort);
-                ds.send(ackDp);
+                group = Common.group(LogContentUtil.getFileContent(path));
+                ConcurrentHashMap<Integer,byte[]> group1 = group;
+                statusReadFileContent = true;
+                new Thread(() -> {
+                    handleReadFileContent(ds, clientAddr, clientPort, group1);
+                }).start();
             } else {
                 int ackNum = cmd;
                 group.remove(ackNum);
                 System.out.println("确认成功，ackNum=" + ackNum);
                 if( statusReadPath && ackNum == Cmd.READ_PATH_FINISH ) {
                     statusReadPath = false;
-                    System.out.println("传输完毕");
+                    System.out.println("目录传输完毕");
+                } else if( statusReadFileContent && ackNum == Cmd.READ_FILE_CONTENT_FINISH) {
+                    statusReadFileContent = false;
+                    System.out.println("文件传输完毕");
                 }
             }
         }
     }
 
 
-    private static void handleReadPath(DatagramSocket datagramSocket, InetAddress clientAddr, int clientPort,  ConcurrentHashMap<Integer,byte[]> group) {
+    private static void handle(DatagramSocket datagramSocket, InetAddress clientAddr, int clientPort,  ConcurrentHashMap<Integer,byte[]> group) {
         while ( group.size() > 0 ) {
             try {
                 Thread.sleep(100);
@@ -71,24 +80,50 @@ public class LogViewServer {
                     e.printStackTrace();
                 }
             });
+        }
+    }
+
+    private static void handleReadFileContent(DatagramSocket datagramSocket, InetAddress clientAddr, int clientPort,  ConcurrentHashMap<Integer,byte[]> group) {
+        handle(datagramSocket, clientAddr, clientPort, group);
+
+        while (statusReadFileContent) {
+            try {
+                Thread.sleep(100);
+                if( !statusReadFileContent ) {
+                    break;
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            byte[] finishCmd = Common.intToBytes(Cmd.READ_FILE_CONTENT_FINISH);
+            DatagramPacket finishCmdDp = new DatagramPacket(finishCmd, finishCmd.length, clientAddr, clientPort);
+            try {
+                datagramSocket.send(finishCmdDp);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
-            while (statusReadPath) {
-                try {
-                    Thread.sleep(100);
-                    if( !statusReadPath ) {
-                        break;
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+    private static void handleReadPath(DatagramSocket datagramSocket, InetAddress clientAddr, int clientPort,  ConcurrentHashMap<Integer,byte[]> group) {
+        handle(datagramSocket, clientAddr, clientPort, group);
+
+        while (statusReadPath) {
+            try {
+                Thread.sleep(100);
+                if( !statusReadPath ) {
+                    break;
                 }
-                byte[] finishCmd = Common.intToBytes(Cmd.READ_PATH_FINISH);
-                DatagramPacket finishCmdDp = new DatagramPacket(finishCmd, finishCmd.length, clientAddr, clientPort);
-                try {
-                    datagramSocket.send(finishCmdDp);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            byte[] finishCmd = Common.intToBytes(Cmd.READ_PATH_FINISH);
+            DatagramPacket finishCmdDp = new DatagramPacket(finishCmd, finishCmd.length, clientAddr, clientPort);
+            try {
+                datagramSocket.send(finishCmdDp);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
