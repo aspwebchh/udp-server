@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6711d5bf-6fbf-4b73-8b71-109fa9d2954c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/release/myaction.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logViewServer/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/log-view-server/logViewServer/Common.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/log-view-server/logViewServer/Common.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/log-view-server/logViewServer/LogContentUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/log-view-server/logViewServer/LogContentUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/log-view-server/logViewServer/LogViewServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/log-view-server/logViewServer/LogViewServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logViewServer/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logViewServer/Common.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logViewServer/LogContentUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logViewServer/LogContentUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/logViewServer/LogViewServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/logViewServer/LogViewServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/release/logViewServer.jar" beforeDir="false" afterPath="$PROJECT_DIR$/release/logViewServer.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logViewServer/LogViewServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logViewServer/LogViewServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,11 +16,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Config.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LogViewServer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/logViewServer/LogViewServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-184">
+              <caret line="93" column="36" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logViewServer/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+            <state relative-caret-position="304">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,9 +69,9 @@
         <option value="$PROJECT_DIR$/config.json" />
         <option value="$PROJECT_DIR$/src/logViewServer/Config.java" />
         <option value="$PROJECT_DIR$/src/logViewServer/LogContentUtil.java" />
-        <option value="$PROJECT_DIR$/src/logViewServer/LogViewServer.java" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/release/myaction.sh" />
+        <option value="$PROJECT_DIR$/src/logViewServer/LogViewServer.java" />
       </list>
     </option>
   </component>
@@ -176,12 +179,12 @@
       <workItem from="1557230174154" duration="9033000" />
       <workItem from="1557288979402" duration="38351000" />
       <workItem from="1557447639622" duration="169000" />
-      <workItem from="1557465260569" duration="10523000" />
+      <workItem from="1557465260569" duration="15614000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58076000" />
+    <option name="totallyTimeSpent" value="63167000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1186" extended-state="7" />
@@ -201,10 +204,10 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" visible="true" weight="0.18070363" />
+      <window_info active="true" anchor="right" id="Ant Build" order="1" visible="true" weight="0.18070363" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3992359" />
@@ -399,20 +402,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logViewServer/LogViewServer.java">
+    <entry file="file://$PROJECT_DIR$/src/logViewServer/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="33" column="71" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
+        <state relative-caret-position="304">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logViewServer/Config.java">
+    <entry file="file://$PROJECT_DIR$/src/logViewServer/LogViewServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+        <state relative-caret-position="-184">
+          <caret line="93" column="36" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

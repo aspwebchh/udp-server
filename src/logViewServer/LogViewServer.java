@@ -11,6 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class LogViewServer {
     public static final Config config =  Config.instance();
 
+    private static final int MAX_RE_SEND_COUNT = 10;
+
     private static final int SERVER_PORT = config.getServerPort();
     private static final int PACKET_LENGTH = 1024;
 
@@ -18,8 +20,6 @@ public class LogViewServer {
     private static volatile boolean statusReadFileContent = false;
 
     public static void main(String[] args) throws IOException {
-
-
         byte[] buf = new byte[PACKET_LENGTH];
         DatagramSocket ds = new DatagramSocket(SERVER_PORT);
         DatagramPacket dp_receive = new DatagramPacket(buf, buf.length);
@@ -52,13 +52,13 @@ public class LogViewServer {
             } else {
                 int ackNum = cmd;
                 group.remove(ackNum);
-                System.out.println("确认成功，ackNum=" + ackNum);
+                //System.out.println("确认成功，ackNum=" + ackNum);
                 if( statusReadPath && ackNum == Cmd.READ_PATH_FINISH ) {
                     statusReadPath = false;
-                    System.out.println("目录传输完毕");
+                    System.out.println("目录传输完毕,st=" + System.currentTimeMillis());
                 } else if( statusReadFileContent && ackNum == Cmd.READ_FILE_CONTENT_FINISH) {
                     statusReadFileContent = false;
-                    System.out.println("文件传输完毕");
+                    System.out.println("文件传输完毕,st=" + System.currentTimeMillis());
                 }
             }
         }
@@ -66,12 +66,8 @@ public class LogViewServer {
 
 
     private static void handle(DatagramSocket datagramSocket, InetAddress clientAddr, int clientPort,  ConcurrentHashMap<Integer,byte[]> group) {
-        while ( group.size() > 0 ) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        int count = 0;
+        while ( group.size() > 0 && count < MAX_RE_SEND_COUNT ) {
             group.forEach((num, data) ->{
                 DatagramPacket dp_send = new DatagramPacket(data, data.length, clientAddr, clientPort);
                 try {
@@ -80,21 +76,22 @@ public class LogViewServer {
                     e.printStackTrace();
                 }
             });
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                count++;
+            }
         }
+        System.out.println("handle.count=" + count + ",st=" + System.currentTimeMillis());
     }
 
     private static void handleReadFileContent(DatagramSocket datagramSocket, InetAddress clientAddr, int clientPort,  ConcurrentHashMap<Integer,byte[]> group) {
         handle(datagramSocket, clientAddr, clientPort, group);
 
-        while (statusReadFileContent) {
-            try {
-                Thread.sleep(100);
-                if( !statusReadFileContent ) {
-                    break;
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        int count = 0;
+        while (statusReadFileContent && count < MAX_RE_SEND_COUNT) {
             byte[] finishCmd = Common.intToBytes(Cmd.READ_FILE_CONTENT_FINISH);
             DatagramPacket finishCmdDp = new DatagramPacket(finishCmd, finishCmd.length, clientAddr, clientPort);
             try {
@@ -102,22 +99,26 @@ public class LogViewServer {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            try {
+                Thread.sleep(500);
+                if( !statusReadFileContent ) {
+                    break;
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }finally {
+                count++;
+            }
         }
+        System.out.println("handleReadFileContent.count=" + count + ",st=" + System.currentTimeMillis());
     }
 
 
     private static void handleReadPath(DatagramSocket datagramSocket, InetAddress clientAddr, int clientPort,  ConcurrentHashMap<Integer,byte[]> group) {
         handle(datagramSocket, clientAddr, clientPort, group);
 
-        while (statusReadPath) {
-            try {
-                Thread.sleep(100);
-                if( !statusReadPath ) {
-                    break;
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        int count = 0;
+        while (statusReadPath && count < MAX_RE_SEND_COUNT) {
             byte[] finishCmd = Common.intToBytes(Cmd.READ_PATH_FINISH);
             DatagramPacket finishCmdDp = new DatagramPacket(finishCmd, finishCmd.length, clientAddr, clientPort);
             try {
@@ -125,6 +126,17 @@ public class LogViewServer {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            try {
+                Thread.sleep(500);
+                if( !statusReadPath ) {
+                    break;
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }finally {
+                count++;
+            }
         }
+        System.out.println("handleReadPath.count=" + count + ",st=" + System.currentTimeMillis());
     }
 }
