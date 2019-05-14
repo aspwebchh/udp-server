@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6711d5bf-6fbf-4b73-8b71-109fa9d2954c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/classes/logViewServer/LogViewServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/logViewServer/LogViewServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/logViewServer/LogContentUtil$FileNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/logViewServer/LogContentUtil$FileNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/logViewServer/LogContentUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/logViewServer/LogContentUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/release/logViewServer.jar" beforeDir="false" afterPath="$PROJECT_DIR$/release/logViewServer.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logViewServer/LogViewServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logViewServer/LogViewServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logViewServer/LogContentUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logViewServer/LogContentUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,10 +21,36 @@
       <file leaf-file-name="LogViewServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logViewServer/LogViewServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-184">
-              <caret line="93" column="36" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="36" />
+            <state relative-caret-position="370">
+              <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Common.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/logViewServer/Common.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogContentUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/logViewServer/LogContentUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="411">
+              <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#441#442#0" expanded="true" />
+                <element signature="e#527#528#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -32,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/src/logViewServer/Config.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,6 +83,7 @@
       <find>System.out.pr</find>
       <find>APP_JAR</find>
       <find>bin/sh</find>
+      <find>10036</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -68,10 +97,10 @@
         <option value="$PROJECT_DIR$/src/logViewServer/Common.java" />
         <option value="$PROJECT_DIR$/config.json" />
         <option value="$PROJECT_DIR$/src/logViewServer/Config.java" />
-        <option value="$PROJECT_DIR$/src/logViewServer/LogContentUtil.java" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/release/myaction.sh" />
         <option value="$PROJECT_DIR$/src/logViewServer/LogViewServer.java" />
+        <option value="$PROJECT_DIR$/src/logViewServer/LogContentUtil.java" />
       </list>
     </option>
   </component>
@@ -95,7 +124,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -124,6 +152,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -179,16 +208,17 @@
       <workItem from="1557230174154" duration="9033000" />
       <workItem from="1557288979402" duration="38351000" />
       <workItem from="1557447639622" duration="169000" />
-      <workItem from="1557465260569" duration="15614000" />
+      <workItem from="1557465260569" duration="15661000" />
+      <workItem from="1557710837093" duration="15000" />
+      <workItem from="1557820388943" duration="1393000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63167000" />
+    <option name="totallyTimeSpent" value="64622000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1186" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -204,7 +234,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info active="true" anchor="right" id="Ant Build" order="1" visible="true" weight="0.18070363" />
@@ -235,10 +265,59 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
     <buildFile url="file://$PROJECT_DIR$/build.xml">
+      <targetFilters>
+        <filter targetName="init" isVisible="false" />
+        <filter targetName="copy" isVisible="false" />
+        <filter targetName="compile" isVisible="false" />
+        <filter targetName="build" isVisible="false" />
+        <filter targetName="run" isVisible="false" />
+        <filter targetName="clean" isVisible="false" />
+        <filter targetName="rerun" isVisible="false" />
+      </targetFilters>
       <expanded value="true" />
     </buildFile>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/logViewServer/LogViewServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2128">
+          <caret line="112" column="105" selection-start-line="112" selection-start-column="105" selection-end-line="112" selection-end-column="105" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logViewServer/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logViewServer/LogViewServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2394">
+          <caret line="126" column="36" lean-forward="true" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logViewServer/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/logViewServer/LogViewServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1463">
@@ -255,6 +334,8 @@
           <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#441#442#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -292,6 +373,8 @@
           <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#441#442#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -361,16 +444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logViewServer/Common.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="88" column="13" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/release/myaction.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
@@ -385,16 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logViewServer/LogContentUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -405,17 +468,39 @@
     <entry file="file://$PROJECT_DIR$/src/logViewServer/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/logViewServer/Common.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logViewServer/LogContentUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#441#442#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/logViewServer/LogViewServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-184">
-          <caret line="93" column="36" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="36" />
+        <state relative-caret-position="370">
+          <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

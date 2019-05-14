@@ -13,6 +13,7 @@ public class LogContentUtil {
         public List<FileNode> children = new ArrayList<>();
         public boolean isFile;
         public String lastModifyTime;
+        public long size;
 
         public String toString() {
             return JSON.toJSONString(this, SerializerFeature.PrettyFormat);
@@ -31,6 +32,7 @@ public class LogContentUtil {
         FileNode fileNode = new FileNode();
         fileNode.name = file.getName();
         fileNode.lastModifyTime = Common.unixTimestamp2StrTime(file.lastModified());
+        fileNode.size = file.length();
         if (file.isDirectory()) {
             fileNode.isFile = false;
             for (File item : file.listFiles()) {
